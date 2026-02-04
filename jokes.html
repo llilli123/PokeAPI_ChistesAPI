@@ -19,9 +19,8 @@
     <section class="card" aria-label="Joke Card">
       <h1 class="titulo">Tu Dosis Diaria De Risa</h1>
       <p id="setup" class="setup muted">Presiona “Nuevo Chiste” para cargar un chiste.</p>
-      <p id="delivery" class="delivery"></p>
       <div class="accion">
-        <button id="btnNewJoke" class="btn" type="button">
+        <button id="btnNuevoChiste" class="btn" type="button">
           Nuevo Chiste
         </button>
       </div>
@@ -30,7 +29,27 @@
   </main>
 
   <script>
-    
+    var setupEl = document.getElementById("setup");
+  var btn = document.getElementById("btnNuevoChiste");
+
+  btn.onclick = function () {
+    btn.disabled = true;
+    setupEl.textContent = "Cargando chiste...";
+
+    fetch("https://v2.jokeapi.dev/joke/Any?type=single")
+      .then(function (respuesta) {
+        return respuesta.json();
+      })
+      .then(function (datos) {
+        setupEl.textContent = datos.joke;
+      })
+      .catch(function () {
+        setupEl.textContent = "Error cargando el chiste. Verifica tu conexión e intenta de nuevo.";
+      })
+      .finally(function () {
+        btn.disabled = false;
+      });
+  };
   </script>
 </body>
 </html>
