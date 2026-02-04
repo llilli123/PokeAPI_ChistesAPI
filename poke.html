@@ -5,12 +5,65 @@
 <title>Buscador Pokemon</title>
 <link rel="icon" type="image/x-icon" href="img/favicon.png">
 <style>
+body{
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 40px;
+}
 
+.card{
+    background: white;
+    width: 300px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+}
 
+input{
+    padding: 10px;
+    width: 70%;
+    margin-bottom: 10px;
+}
+
+button{
+    padding: 10px;
+    background-color: #ff4747;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover{
+    background-color: #d93636;
+}
+
+img{
+    width: 150px;
+}
+
+.volver {
+  margin-bottom: 20px;
+}
+
+.volver a {
+  color: #ff5a00;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.volver a:hover {
+  text-decoration: underline;
+}
 </style>
 </head>
 
 <body>
+    <div class="volver">
+      <a href="index.html">← Volver a Menu Principal</a>
+    </div>
 <h1>Buscar Pokemon</h1>
 <input type="text" id="pokemonInput" placeholder="Nombre">
 <button id="btnBuscarPokemon" class="btn" type="button">Buscar</button>
