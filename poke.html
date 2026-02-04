@@ -75,7 +75,34 @@ img{
 </div>
 
 <script>
+function buscarPokemon(){
 
+    var nombrePokemon = document.getElementById("pokemonInput").value.toLowerCase();
+
+    fetch("https://pokeapi.co/api/v2/pokemon/" + nombrePokemon)
+    .then(function(respuesta){
+        return respuesta.json();
+    })
+    .then(function(datos){
+
+        document.getElementById("nombre").textContent = datos.name;
+
+        document.getElementById("imagen").src = datos.sprites.front_default;
+
+        document.getElementById("tipo").textContent =
+            "Tipo: " + datos.types.map(t => t.type.name).join(", ");
+
+        document.getElementById("stats").textContent =
+            "HP: " + datos.stats[0].base_stat +
+            " | Ataque: " + datos.stats[1].base_stat +
+            " | Defensa: " + datos.stats[2].base_stat;
+
+    })
+    .catch(function(){
+        alert("Pokémon no encontrado");
+    });
+
+}
 </script>
 
 </body>
